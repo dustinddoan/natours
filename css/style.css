@@ -1,205 +1,144 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
 /* universal to reset the page */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
 
 body {
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 1.6rem; */
   line-height: 1.7;
   color: #777;
-  padding: 30px;
-}
+  padding: 3rem; }
 
 .header {
   height: 95vh;
   /* 2 background overlap */
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.7),
-      rgba(40, 180, 133, 0.7)
-    ),
-    url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.7), rgba(40, 180, 133, 0.7)), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
   position: relative;
-
   /* clip the image */
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%)
-}
-
-.logo-box {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-
-}
-
-.logo {
-  height: 35px;
-}
-
-.text-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  margin-bottom: 60px;
-
+  margin-bottom: 6rem;
   /* fix shaking animation */
-  backface-visibility: hidden;
-}
-
-.heading-primary-main {
-  display: block;
-  font-size: 60px;
-  font-weight: 400;
-  letter-spacing: 35px;
-  
-  animation-name: moveInLeft;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
-
-  /* 
-  animation-delay:3s;
-  animation-iteration-count: 3
-  */
-}
-
-.heading-primary-sub {
-  display: block;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 16px;
-
-  animation: moveInRight 2s ease-out
-}
+  backface-visibility: hidden; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    /* 
+    animation-delay:3s;
+    animation-iteration-count: 3
+    */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.6rem;
+    animation: moveInRight 2s ease-out; }
 
 /* heading */
 /* define the animation and apply to the class of text */
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px) rotate(0deg)
-  }
-
+    transform: translateX(-10rem) rotate(0deg); }
   /* 60% {
     transform: rotate(180deg)
   } */
-
   80% {
-    transform: translateX(10px)
-  }
-
+    transform: translateX(1rem); }
   100% {
     opacity: 1;
-    transform: translate(0)
-  }
-}
+    transform: translate(0); } }
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px)
-  }
-
+    transform: translateX(10rem); }
   80% {
-    transform: translateX(-10px)
-  }
-
+    transform: translateX(-1rem); }
   100% {
     opacity: 1;
-    transform: translate(0)
-  }
-}
+    transform: translate(0); } }
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px);
-  }
-
+    transform: translateY(3rem); }
   100% {
     opacity: 1;
-    transform: translate(0)
-  }
-}
+    transform: translate(0); } }
 
 /* .btn:link pseudo class with state of the btn selector */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 15px 40px;
-  display: inline-block;
-  border-radius: 100px;
-  transition: all .2s;
-
-  /* reference for button after */
-  position: relative;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  /* x y direction and blur */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
-}
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .2)
-
-}
-
-.btn-white {
-  background-color: #fff;
-  color: #777;
-}
-
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 100px;
-  /* put behind the button */
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* zindex define postion of element if it on top on another  value -1: behind */
-  z-index: -1;
-  transition: all .4s
-}
-
-.btn-white::after {
-  background-color: #fff;
-}
-
-/* we want to see it when hover certain style after */
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
-
-.btn-animated {
-  animation: moveInBottom .5s ease-out .75s;
-  /* always apply 0% */
-  animation-fill-mode: backwards;
-}
+.btn {
+  /* after element */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    font-size: 1.6rem;
+    /* reference for button after */
+    position: relative; }
+  .btn:hover {
+    transform: translateY(-3px);
+    /* x y direction and blur */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* we want to see it when hover certain style after */ }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* put behind the button */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* zindex define postion of element if it on top on another  value -1: behind */
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* always apply 0% */
+    animation-fill-mode: backwards; }
