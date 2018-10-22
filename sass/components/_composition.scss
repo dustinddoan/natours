@@ -1,0 +1,44 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+    border-radius: 2px;
+    position: absolute;
+    // z index of each photo
+    z-index: 10;
+    transition: all .2s;
+    outline-offset: 1rem;
+
+    &--p1 {
+      left: 0;
+      top: -2rem;
+    }
+
+    &--p2 {
+      right: 0;
+      top: 2rem;
+    }
+
+    &--p3 {
+      left: 20%;
+      top: 10rem;
+    }
+
+    &:hover {
+      // outline of the picture
+      outline: 1rem solid $color-primary;
+      transform: scale(1.1) translateY(-.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+      // hover set z index so it will on top of others
+      z-index: 20;
+    }
+  }
+
+  // photo in the back and not hover will smaller
+  // composition:hover composition_photo:not(:hover)
+  &:hover &__photo:not(:hover) {
+    transform: scale(.9)
+  }
+}

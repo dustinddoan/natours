@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width;
-  background-color: #eee;
   // center the box
   margin: 0 auto;
 
@@ -15,7 +14,7 @@
   // * contain col-
   // $ both
   [class^="col-"] {
-    background-color: orangered;
+
 
     float: left;
 
