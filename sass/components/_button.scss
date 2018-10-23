@@ -1,6 +1,7 @@
 
 /* .btn:link pseudo class with state of the btn selector */
 .btn {
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -9,10 +10,14 @@
     display: inline-block;
     border-radius: 10rem;
     transition: all 0.2s;
-    font-size: 1.6rem;
+    font-size: $default-font-size;
 
     /* reference for button after */
     position: relative;
+
+    // change for <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -28,7 +33,9 @@
 
   }
 
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
