@@ -9,9 +9,45 @@
 
 html {
   // defines what 1rem is
+  // 1rem = 10px; 10px/16px = 62.5%
   font-size: 62.5%;
+
+  // blocks coed below are the same
+  // @media (max-width: 600px) {
+  //   font-size: 50%;
+  // }
+  // @include respond-phone {
+  //   font-size: 50%;
+  // }
+
+  //  dont need this since tab-port alreay apply
+  // @include respond(phone) {
+  //   font-size: 50%;
+  // }
+  
+  // width < 1200px
+  @include respond(tab-land) {
+    font-size: 56.25%;   // 1rem = 9px; 9px/16px = 56.25%
+  }
+
+  // width < 900px also apply for width < 600px
+  @include respond(tab-port) {
+    font-size: 50%;   // 1rem = 8px; 8px/16px = 50%
+  }
+
+
+  @include respond(big-desktop) {
+    font-size: 75%;   // 1rem = 12px; 12px/16px = 75%
+  }
+
 }
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+
 }
