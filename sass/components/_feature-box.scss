@@ -17,6 +17,7 @@
     display: inline-block;
     // clip background color to text
     background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 
